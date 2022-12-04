@@ -1,6 +1,6 @@
 # OpenSSL OCSP Responder
 
-Configuration to run OpenSSL as an OCSP Responder as a Docker container.
+Configuration to run OpenSSL as an OCSP Responder in a Docker container.
 
 https://www.openssl.org/docs/manmaster/man1/openssl-ocsp.html#OCSP-Server-Options
 
@@ -11,6 +11,7 @@ https://www.openssl.org/docs/manmaster/man1/openssl-ocsp.html#OCSP-Server-Option
 - The CA Certificate, CA Index, Signing Certificate, and Signing Key files are **REQUIRED**.
 - The CA Certificate **MAY** be used as the Signing Certificate if it contains the required extensions.
 - When the CA Index attribute `unique_subject = no` is configured, the `index.attr` file **MUST** be provided with the `index` file.
+- This OpenSSL OCSP Responder configuration **SHOULD NOT** be used in a Production environment.
 
 <br />
 
@@ -51,3 +52,11 @@ If all certificates in the CA Index are revoked, the health check can be reconfi
 ```
 -serial "0x$(grep -m 1 -Po '^R\s+\d+Z\s+\d+Z[,]*\w*\s+\K[0-9a-fA-F]+' ${OPENSSL_RESPONDER_INDEX})"
 ```
+
+<br />
+
+## OpenSSL License and Copyright
+
+OpenSSL License Information: https://github.com/openssl/openssl#license
+
+OpenSSL Copyright Information: https://github.com/openssl/openssl#copyright
